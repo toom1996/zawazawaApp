@@ -10,11 +10,15 @@ class AppHeader extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      leading: new IconButton(
-        color: Colors.black,
-        icon: Icon(Icons.dehaze),
-        onPressed: () {},
-      ),
+      leading: Builder(builder: (BuildContext context) {
+        return IconButton(
+          color: Colors.black,
+          icon: Icon(Icons.dehaze),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        );
+      }),
       actions: <Widget>[
         new IconButton(
           icon: Icon(Icons.search),

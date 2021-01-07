@@ -67,6 +67,7 @@ class _IndexPageState extends State<IndexPage> {
       top: false,
       bottom: true,
       child: Scaffold(
+        drawer: Drawer(),
         backgroundColor: Color.fromRGBO(239, 239, 239, 1),
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
@@ -77,6 +78,13 @@ class _IndexPageState extends State<IndexPage> {
               sliver: ScrollList(indexData),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => {
+            print("test")
+          },
+          tooltip: 'Increment',
+          child: Icon(Icons.add),
         ),
       ),
     );
