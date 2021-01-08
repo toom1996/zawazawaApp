@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:z/common/app_header.dart';
+import 'package:z/common/app_left_drawer.dart';
 import 'package:z/common/app_scroll_list.dart';
 
 class IndexPage extends StatefulWidget {
@@ -67,7 +68,10 @@ class _IndexPageState extends State<IndexPage> {
       top: false,
       bottom: true,
       child: Scaffold(
-        drawer: Drawer(),
+        drawer:Container(
+          width: MediaQuery.of(context).size.width * 0.75,
+         child: LeftDrawer(),
+        ),
         backgroundColor: Color.fromRGBO(239, 239, 239, 1),
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
