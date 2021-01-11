@@ -78,7 +78,7 @@ class _ZawazawaHeaderState extends State<ZawazawaHeader> with ZawazawaBase {
                           Scaffold.of(context).openDrawer()
                         },
                         child: Image.network(
-                          'http://toomhub.image.23cm.cn/14993df391fc3c455040e5978e8f85b8.jpg',
+                          'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLwQss0dlpIGgHUe0hjdkL8lMAz0wAa9QnyAukWEDnm5jS2ga0GZTwb33hcHN34YkZrdaM8qtAP6A/132',
                           width: dp(40),
                           height: dp(40),
                           fit: BoxFit.fill,
