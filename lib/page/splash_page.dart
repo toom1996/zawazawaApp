@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:z/base/zawazawa_base.dart';
 import 'package:z/page/index.dart';
 import 'package:z/page/splashanimmanager.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -53,6 +55,9 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    //初始化screenUitl
+    ScreenUtil.instance = ScreenUtil(width: ZawazawaBase.dessignWidth)..init(context);
+
     final double screenWidth = MediaQuery.of(context).size.width;
     _splashAnimManager = SplashAnimManager(
       _animationController,

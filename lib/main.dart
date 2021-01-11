@@ -2,7 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:z/base/zawazawa_base.dart';
+import 'package:z/common/app_left_drawer.dart';
+import 'package:z/page/index.dart';
 import 'page/splash_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   //不知道是干嘛的。。
@@ -23,46 +27,13 @@ void main() {
 
 class ZawazawaApp extends StatelessWidget {
 
-  Route<dynamic> _getRoute(RouteSettings settings) {
-    Map<String, WidgetBuilder> routes = {
-      '/advancePage': (BuildContext context) => SplashPage(),
-    };
-    var widget = routes[settings.name];
-
-    if (widget != null) {
-      return MaterialPageRoute<void>(
-        settings: settings,
-        builder: widget,
-      );
-    }
-    return null;
-  }
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '斗鱼',
-      theme: ThemeData(
-          scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
-          primarySwatch: Colors.orange,
-          textTheme: TextTheme(
-            bodyText1: TextStyle(color: Colors.black),
-          ),
-          appBarTheme: AppBarTheme(
-            textTheme: TextTheme(
-              headline6: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-              ),
-              bodyText1: TextStyle(color: Colors.black),
-            ),
-          )
-        // splashFactory: NoSplashFactory()
-      ),
-      onGenerateRoute: _getRoute,
-      home: NewHome(),
+      title: '咋哇咋哇',
+//      onGenerateRoute: _getRoute, //路由回调函数，当通过Nacigator.of(context).pushNamed跳转路由时，在routes查找不到时，会调用该方法
+      home: NewHome(), //跳转到欢迎页
     );
   }
 }
@@ -70,22 +41,7 @@ class ZawazawaApp extends StatelessWidget {
 class NewHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: setNavigationBarTextColor(true),
-      child: Scaffold(
-        body: SplashPage(),
-      ),
-    );
-  }
-
-  SystemUiOverlayStyle setNavigationBarTextColor(bool light) {
-    return SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black,
-      systemNavigationBarDividerColor: null,
-      systemNavigationBarIconBrightness: Brightness.light,
-      statusBarColor: null,
-      statusBarIconBrightness: light ? Brightness.light : Brightness.dark,
-      statusBarBrightness: light ? Brightness.dark : Brightness.light,
-    );
+    ScreenUtil.instance = ScreenUtil(width: ZawazawaBase.dessignWidth)..init(context);
+    return IndexPage();
   }
 }

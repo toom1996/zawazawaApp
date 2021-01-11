@@ -3,7 +3,7 @@ import 'package:z/common/app_scroll_list_attach.dart';
 import 'package:dio/dio.dart';
 
 class ScrollList extends StatefulWidget {
-  String content;
+  List content;
 
   ScrollList(this.content);
 
