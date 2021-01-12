@@ -18,24 +18,35 @@ class ScrollListAttach extends StatelessWidget {
       tiles.add(Expanded(
         child: Container(
           alignment: Alignment.centerLeft,
-          constraints: !isSingle
-              ? null
-              : BoxConstraints(
-//                  maxHeight: 100,
-                  minWidth: 300,
+          constraints: isSingle
+              ?BoxConstraints(
+                  maxHeight: 300,
+//                  minWidth: 300,
 //                  maxHeight: 300
-                ),
+                ) : null,
           margin: EdgeInsets.all(1.0),
           child: isSingle
               ? Image.network(
-                  item,
+                  item['host'] + item['name'],
                   fit: BoxFit.cover,
                 )
               : AspectRatio(
                   aspectRatio: 1 / 1,
-                  child: Image.network(
-                    item,
-                    fit: BoxFit.cover,
+                  child: Column(
+                    children: [
+                      Image.network(
+                        item['host'] + item['name'],
+                        fit: BoxFit.cover,
+                      ),
+                      Image.network(
+                        item['host'] + item['name'],
+                        fit: BoxFit.cover,
+                      ),
+                      Image.network(
+                        item['host'] + item['name'],
+                        fit: BoxFit.cover,
+                      )
+                    ],
                   ),
                 ),
         ),
@@ -51,6 +62,15 @@ class ScrollListAttach extends StatelessWidget {
 //      //此时如果我们直接把生成的tiles放在<Widget>[]中是会报一个类型不匹配的错误，把<Widget>[]删了就可以了
 //    );
     return content;
+  }
+
+
+  Widget buildChildItem(BuildContext context) {
+    List<Widget> tiles = []; //先建一个数组用于存放循环生成的widget
+    Widget content; //单独一个widget组件，用于返回需要生成的内容widget
+    for (var item in _url) {
+
+    }
   }
 
   @override
