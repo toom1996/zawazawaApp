@@ -5,7 +5,6 @@ class LeftDrawer extends StatelessWidget {
   final drawerWidth = 0.75;
 
 
-
   @override
   Widget build(BuildContext context) {
     return Container(

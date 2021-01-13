@@ -130,9 +130,7 @@ class _IndexPageState extends State<IndexPage>
       return;
     }
 
-
     setState(() {
-
       //TODO 隐藏float按钮
       //设置头部导航栏高度
       _headerHeight = nextHeight;
@@ -210,6 +208,7 @@ class _IndexPageState extends State<IndexPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(238, 238, 238, 1),
       drawer: Container(
         width: MediaQuery.of(context).size.width * 0.75,
         child: LeftDrawer(),
@@ -236,15 +235,17 @@ class _IndexPageState extends State<IndexPage>
           )),
         ],
       ),
-      floatingActionButton: _isShowPublishButton ? FloatingActionButton(
-          onPressed: () => print("FloatingActionButton"),
-          child: IconButton(icon: Icon(Icons.add), onPressed: () {}),
-          tooltip: "按这么长时间干嘛",
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.blue,
-           elevation: 6.0,
-           highlightElevation: 12.0,
-          shape: CircleBorder()): null,
+      floatingActionButton: _isShowPublishButton
+          ? FloatingActionButton(
+              onPressed: () => print("FloatingActionButton"),
+              child: IconButton(icon: Icon(Icons.add), onPressed: () {}),
+              tooltip: "按这么长时间干嘛",
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.blue,
+              elevation: 6.0,
+              highlightElevation: 12.0,
+              shape: CircleBorder())
+          : null,
     );
   }
 }
