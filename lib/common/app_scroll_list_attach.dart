@@ -1,3 +1,4 @@
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:z/base/zawazawa_base.dart';
 
@@ -7,7 +8,7 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
   ScrollListAttach(this._url);
 
   //九宫格图片布局
-  Widget _NineGrid(BuildContext context, List picUrlList) {
+  Widget _nineGrid(BuildContext context, List picUrlList) {
     print(picUrlList);
     List picList = picUrlList;
     //如果包含九宫格图片
@@ -15,33 +16,33 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
       //一共有几张图片
       num len = picList.length;
       //算出一共有几行
-      int rowlength = 0;
+      int rowLength = 0;
       //一共有几列
-      int conlength = 0;
+      int conLength = 0;
       if (len <= 3) {
-        conlength = len;
-        rowlength = 1;
+        conLength = len;
+        rowLength = 1;
       } else if (len <= 6) {
-        conlength = 3;
-        rowlength = 2;
+        conLength = 3;
+        rowLength = 2;
         if (len == 4) {
-          conlength = 2;
+          conLength = 2;
         }
       } else {
-        conlength = 3;
-        rowlength = 3;
+        conLength = 3;
+        rowLength = 3;
       }
       //一行的组件
       List<Widget> imgList = [];
       //一行包含三个图片组件
       List<List<Widget>> rows = [];
       //遍历行数和列数,计算出宽高生成每个图片组件,
-      for (var row = 0; row < rowlength; row++) {
+      for (var row = 0; row < rowLength; row++) {
         List<Widget> rowArr = [];
-        for (var col = 0; col < conlength; col++) {
-          num index = row * conlength + col;
+        for (var col = 0; col < conLength; col++) {
+          num index = row * conLength + col;
           num screenWidth = MediaQuery.of(context).size.width;
-          double cellWidth = (screenWidth - 40) / 3;
+          double cellWidth = (screenWidth - dp(48)) / 3;
           double itemW = 0;
           double itemH = 0;
           if (len == 1) {
@@ -77,33 +78,37 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
               EdgeInsets mMargin;
               if (len == 4) {
                 if (index == 0) {
-                  mMargin = const EdgeInsets.only(right: 2.5, bottom: 5);
+                  mMargin = EdgeInsets.only(right: dp(2), bottom: 5);
                 } else if (index == 1) {
-                  mMargin = const EdgeInsets.only(left: 2.5, bottom: 5);
+                  mMargin =  EdgeInsets.only(left: dp(2), bottom: 5);
                 } else if (index == 2) {
-                  mMargin = const EdgeInsets.only(right: 2.5);
+                  mMargin =  EdgeInsets.only(right: dp(2));
                 } else if (index == 3) {
-                  mMargin = const EdgeInsets.only(left: 2.5);
+                  mMargin =  EdgeInsets.only(left: dp(2));
                 }
               } else {
                 if (index == 1 || index == 4 || index == 7) {
                   mMargin =
-                      const EdgeInsets.only(left: 2.5, right: 2.5, bottom: 5);
+                       EdgeInsets.only(left: dp(2), right: dp(2), bottom: 5);
                 } else if (index == 0 || index == 3 || index == 6) {
-                  mMargin = const EdgeInsets.only(right: 2.5, bottom: 5);
+                  mMargin =  EdgeInsets.only(right: dp(2), bottom: 5);
                 } else if (index == 2 || index == 5 || index == 8) {
-                  mMargin = const EdgeInsets.only(left: 2.5, bottom: 5);
+                  mMargin =  EdgeInsets.only(left: dp(2), bottom: 5);
                 }
               }
 
               rowArr.add(Container(
                 child: Container(
                   margin: mMargin,
-                  child: Image.network(
+                  child:ExtendedImage.network(
                     picList[index]['host'] + picList[index]['name'],
-                    fit: BoxFit.cover,
+                    handleLoadingProgress: true,
                     width: itemW,
                     height: itemH,
+                    fit: BoxFit.cover,
+                    cache: false,
+                    enableSlideOutPage: true,
+                    //cancelToken: cancellationToken,
                   ),
                 ),
               ));
@@ -130,6 +135,6 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
 
   @override
   Widget build(BuildContext context) {
-    return _NineGrid(context, _url);
+    return _nineGrid(context, _url);
   }
 }

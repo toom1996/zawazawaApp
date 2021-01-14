@@ -98,26 +98,23 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadiusDirectional.circular(10))),
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(dp(10)),
               margin: EdgeInsets.fromLTRB(0, dp(10), 0, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       _avatar(index),
                       _info(index),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children:[
+                        children: [
                           Icon(
                             Icons.keyboard_arrow_down,
                             color: Colors.grey.shade500,
                           )
-                        ],),    //row是widget
-
+                        ],
+                      ),
                     ],
                   ),
                   _content(index),
