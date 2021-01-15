@@ -13,7 +13,6 @@ class ScrollList extends StatefulWidget {
 class _ScrollListState extends State<ScrollList> with ZawazawaBase {
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
-  List<String> items = ["1", "2", "3", "4", "5", "6", "7", "8"];
   List _newList = [];
   bool flag = true; //默认可以请求
 
@@ -29,7 +28,6 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
       String url = ZawazawaApi.baseHost + ZawazawaApi.index;
       Response response = await Dio().get(url);
       List list = response.data['data']['list'];
-      print(list);
       setState(() {
         _newList.addAll(list);
       });
@@ -54,7 +52,6 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
     // monitor network fetch
     await Future.delayed(Duration(milliseconds: 1000));
     // if failed,use loadFailed(),if no data return,use LoadNodata()
-    items.add((items.length + 1).toString());
     if (mounted) setState(() {});
     _refreshController.loadComplete();
   }
@@ -93,6 +90,7 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
           shrinkWrap: true,
           itemCount: _newList.length, //- 要生成的条数
           itemBuilder: (context, index) {
+
             return Container(
               decoration: ShapeDecoration(
                   color: Colors.white,
@@ -204,6 +202,7 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
   //scrollList 发布用户的头像
   Widget _avatar(num index) {
     return Container(
+      padding: EdgeInsets.fromLTRB(0, 0, dp(10), 0),
       child: CircleAvatar(
         radius: dp(20),
         backgroundImage: NetworkImage(this._newList[index]['avatar_url']),
@@ -275,7 +274,7 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
     return Padding(
       padding: EdgeInsets.fromLTRB(0, dp(10), 0, dp(10)),
       child: Text(
-        "sdfsadfsdfdssfdfsddfsaaaaaa士大夫撒地方十大阀士大夫撒旦飞洒地方撒打发士大夫",
+        _newList[index]['content'],
         style: TextStyle(fontSize: 16),
       ),
     );

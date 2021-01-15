@@ -1,15 +1,19 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:z/base/zawazawa_base.dart';
+import 'package:z/common/app_scroll_attach_image_view.dart';
 
 class ScrollListAttach extends StatelessWidget with ZawazawaBase {
   final List _url;
+  int _currentImageWidth;
+  int _currentImageHeight;
 
   ScrollListAttach(this._url);
 
   //九宫格图片布局
   Widget _nineGrid(BuildContext context, List picUrlList) {
-    print(picUrlList);
+//    print(picUrlList);
     List picList = picUrlList;
     //如果包含九宫格图片
     if (picList != null && picList.length > 0) {
@@ -41,6 +45,7 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
         List<Widget> rowArr = [];
         for (var col = 0; col < conLength; col++) {
           num index = row * conLength + col;
+          print(index);
           num screenWidth = MediaQuery.of(context).size.width;
           double cellWidth = (screenWidth - dp(48)) / 3;
           double itemW = 0;
@@ -62,15 +67,52 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
             itemW = cellWidth;
             itemH = cellWidth;
           }
+
+          Image image =
+              Image.network(picList[col]['host'] + picList[col]['name']);
+//          image.image
+//              .resolve(ImageConfiguration())
+//              .addListener(ImageStreamListener((ImageInfo info, bool _) {
+//                _currentImageWidth = info.image.width;
+//                _currentImageHeight = info.image.height;
+//            print('model.width======$info');
+//          }));
+
+
+
           if (len == 1) {
             rowArr.add(Container(
               constraints: BoxConstraints(
-                  maxHeight: dp(250), maxWidth: dp(250), minHeight: dp(200), minWidth: dp(200)),
+                  maxHeight: dp(250),
+                  maxWidth: dp(250),
+                  minHeight: dp(200),
+                  minWidth: dp(200)),
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: Image.network(
-                    picList[index]['host'] + picList[index]['name'],
-                    fit: BoxFit.cover),
+                child: GestureDetector(
+                  child: Container(
+                    child: ExtendedImage.network(
+                      picList[col]['host'] + picList[col]['name'],
+                      handleLoadingProgress: true,
+                      width: itemW,
+                      height: itemH,
+                      fit: BoxFit.cover,
+                      cache: false,
+                      enableSlideOutPage: true,
+                      //cancelToken: cancellationToken,
+                    ),
+                  ),
+                  onTap: () {
+                    print(_url);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return ScrollListAttachImageView(
+                            _url );
+                      }),
+                    );
+                  },
+                ),
               ),
             ));
           } else {
@@ -80,38 +122,50 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
                 if (index == 0) {
                   mMargin = EdgeInsets.only(right: dp(2), bottom: 5);
                 } else if (index == 1) {
-                  mMargin =  EdgeInsets.only(left: dp(2), bottom: 5);
+                  mMargin = EdgeInsets.only(left: dp(2), bottom: 5);
                 } else if (index == 2) {
-                  mMargin =  EdgeInsets.only(right: dp(2));
+                  mMargin = EdgeInsets.only(right: dp(2));
                 } else if (index == 3) {
-                  mMargin =  EdgeInsets.only(left: dp(2));
+                  mMargin = EdgeInsets.only(left: dp(2));
                 }
               } else {
                 if (index == 1 || index == 4 || index == 7) {
                   mMargin =
-                       EdgeInsets.only(left: dp(2), right: dp(2), bottom: 5);
+                      EdgeInsets.only(left: dp(2), right: dp(2), bottom: 5);
                 } else if (index == 0 || index == 3 || index == 6) {
-                  mMargin =  EdgeInsets.only(right: dp(2), bottom: 5);
+                  mMargin = EdgeInsets.only(right: dp(2), bottom: 5);
                 } else if (index == 2 || index == 5 || index == 8) {
-                  mMargin =  EdgeInsets.only(left: dp(2), bottom: 5);
+                  mMargin = EdgeInsets.only(left: dp(2), bottom: 5);
                 }
               }
 
-              rowArr.add(Container(
-                child: Container(
-                  margin: mMargin,
-                  child:ExtendedImage.network(
-                    picList[index]['host'] + picList[index]['name'],
-                    handleLoadingProgress: true,
-                    width: itemW,
-                    height: itemH,
-                    fit: BoxFit.cover,
-                    cache: false,
-                    enableSlideOutPage: true,
-                    //cancelToken: cancellationToken,
+              rowArr.add(
+                GestureDetector(
+                  child: Container(
+                    margin: mMargin,
+                    child: ExtendedImage.network(
+                      picList[index]['host'] + picList[index]['name'],
+                      handleLoadingProgress: true,
+                      width: itemW,
+                      height: itemH,
+                      fit: BoxFit.cover,
+                      cache: false,
+                      enableSlideOutPage: true,
+                      //cancelToken: cancellationToken,
+                    ),
                   ),
+                  onTap: () {
+                    print("ddd$_url");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return ScrollListAttachImageView(
+                            _url );
+                      }),
+                    );
+                  },
                 ),
-              ));
+              );
             }
           }
         }
