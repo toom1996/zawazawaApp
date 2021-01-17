@@ -45,7 +45,6 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
         List<Widget> rowArr = [];
         for (var col = 0; col < conLength; col++) {
           num index = row * conLength + col;
-          print(index);
           num screenWidth = MediaQuery.of(context).size.width;
           double cellWidth = (screenWidth - dp(48)) / 3;
           double itemW = 0;
@@ -103,12 +102,11 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
                     ),
                   ),
                   onTap: () {
-                    print(_url);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
                         return ScrollListAttachImageView(
-                            _url );
+                            _url, index );
                       }),
                     );
                   },
@@ -160,7 +158,7 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
                       context,
                       MaterialPageRoute(builder: (context) {
                         return ScrollListAttachImageView(
-                            _url );
+                            _url, index);
                       }),
                     );
                   },

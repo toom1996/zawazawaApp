@@ -2,6 +2,7 @@
  * @discripe: 关注
  */
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,7 @@ import 'package:z/common/app_header.dart';
 import 'package:z/common/app_index_header.dart';
 import 'package:z/common/app_left_drawer.dart';
 import 'package:z/common/app_scroll_list.dart';
+import 'package:z/page/publish.dart';
 
 // 首页总结构
 /// 该页头部为自定义手势实现的与斗鱼安卓APP相同效果，而不是像首页那样直接调用Flutter封装好的[AppBar]的交互。
@@ -101,7 +103,7 @@ class _IndexPageState extends State<IndexPage>
   //是否正处于动画状态
   bool _isAnimating = false;
 
-  bool _isShowPublishButton = false;
+  bool _isShowPublishButton = true;
 
   PointerDownEvent _pointDownEvent;
 
@@ -238,7 +240,9 @@ class _IndexPageState extends State<IndexPage>
       floatingActionButton: _isShowPublishButton
           ? FloatingActionButton(
               onPressed: () => print("FloatingActionButton"),
-              child: IconButton(icon: Icon(Icons.add), onPressed: () {}),
+              child: IconButton(icon: Icon(Icons.add), onPressed: () {
+                Navigator.pushNamed(context, '/publish');
+              }),
               tooltip: "按这么长时间干嘛",
               foregroundColor: Colors.white,
               backgroundColor: Colors.blue,

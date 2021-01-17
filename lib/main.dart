@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:z/base/zawazawa_base.dart';
 import 'package:z/common/app_left_drawer.dart';
 import 'package:z/page/index.dart';
+import 'package:z/page/publish.dart';
 import 'page/splash_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,6 +31,9 @@ class ZawazawaApp extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: MaterialApp(
+        routes: {
+          '/publish':(context) => Publish(),
+        },
         title: '咋哇咋哇',
 //      onGenerateRoute: _getRoute, //路由回调函数，当通过Nacigator.of(context).pushNamed跳转路由时，在routes查找不到时，会调用该方法
         home: NewHome(), //跳转到欢迎页
