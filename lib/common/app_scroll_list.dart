@@ -132,65 +132,90 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
-                    child: Text(
-                      '999个查看',
-                      style:
-                          TextStyle(fontSize: 12, color: Colors.grey.shade500),
+                    padding: EdgeInsets.fromLTRB(0, dp(15), dp(0), dp(10)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            children: [
+                              Material(
+                                child: Row(
+                                  children: [
+                                    IconButton(icon: Icon(
+                                      Icons.share,
+                                      color: Colors.grey.shade500,
+                                      size: dp(20),
+                                    ), onPressed: () {
+                                      print("dddddddddddddddddddddddddddddddddddddddd");
+                                    },
+                                      highlightColor: Colors.red,),
+                                    Text(
+                                      '99',
+                                      style: TextStyle(
+                                          fontSize: dp(15), color: Colors.grey.shade500),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child:Material(
+                            child: Row(
+                              children: [
+                                IconButton(icon: Icon(
+                                  Icons.share,
+                                  color: Colors.grey.shade500,
+                                  size: dp(20),
+                                ), onPressed: () {
+                                  print("dddddddddddddddddddddddddddddddddddddddd");
+                                },
+                                  highlightColor: Colors.red,),
+                                Text(
+                                  '99',
+                                  style: TextStyle(
+                                      fontSize: dp(15), color: Colors.grey.shade500),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.favorite,
+                                color: Colors.grey.shade500,
+                                size: dp(20),
+                              ),
+                              Text(
+                                '99',
+                                style: TextStyle(
+                                    fontSize: dp(15), color: Colors.grey.shade500),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.more_horiz,
+                                color: Colors.grey.shade500,
+                                size: dp(20),
+                              ),
+                              Text(
+                                '99',
+                                style: TextStyle(
+                                    fontSize: dp(15), color: Colors.grey.shade500),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.chat_bubble,
-                        color: Colors.grey.shade500,
-                        size: 16,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        '99',
-                        style: TextStyle(
-                            fontSize: 12, color: Colors.grey.shade500),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.rotate_right,
-                        color: Colors.grey.shade500,
-                        size: 16,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        '99',
-                        style: TextStyle(
-                            fontSize: 12, color: Colors.grey.shade500),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.favorite,
-                        color: Colors.grey.shade500,
-                        size: 16,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        '99',
-                        style: TextStyle(
-                            fontSize: 12, color: Colors.grey.shade500),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.share,
-                        color: Colors.grey.shade500,
-                        size: 16,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        '99',
-                        style: TextStyle(
-                            fontSize: 12, color: Colors.grey.shade500),
-                      ),
-                      SizedBox(width: 30)
-                    ],
                   )
                 ],
               ),

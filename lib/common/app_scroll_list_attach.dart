@@ -89,24 +89,35 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: GestureDetector(
-                  child: Container(
-                    child: ExtendedImage.network(
-                      picList[col]['host'] + picList[col]['name'],
-                      handleLoadingProgress: true,
-                      width: itemW,
-                      height: itemH,
-                      fit: BoxFit.cover,
-                      cache: false,
-                      enableSlideOutPage: true,
-                      //cancelToken: cancellationToken,
-                    ),
+                  child: Stack(
+                 fit: StackFit.expand,
+                    children: [
+                      Container(
+                        child: ExtendedImage.network(
+                          picList[col]['host'] + picList[col]['name'],
+                          handleLoadingProgress: true,
+                          fit: BoxFit.cover,
+                          cache: false,
+                          enableSlideOutPage: true,
+                          //cancelToken: cancellationToken,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          picList[col]['ext'],
+                          style: TextStyle(color: Colors.black,backgroundColor: Colors.white),
+                        ),
+                      )
+                    ],
                   ),
                   onTap: () {
+                    print(_url);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
                         return ScrollListAttachImageView(
-                            _url, index );
+                            _url,index );
                       }),
                     );
                   },
@@ -141,24 +152,34 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
                 GestureDetector(
                   child: Container(
                     margin: mMargin,
-                    child: ExtendedImage.network(
-                      picList[index]['host'] + picList[index]['name'],
-                      handleLoadingProgress: true,
-                      width: itemW,
-                      height: itemH,
-                      fit: BoxFit.cover,
-                      cache: false,
-                      enableSlideOutPage: true,
-                      //cancelToken: cancellationToken,
+                    child: Stack(
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        ExtendedImage.network(
+                          picList[index]['host'] + picList[index]['name'],
+                          handleLoadingProgress: true,
+                          width: itemW,
+                          height: itemH,
+                          fit: BoxFit.cover,
+                          cache: false,
+                          enableSlideOutPage: true,
+                          //cancelToken: cancellationToken,
+                        ),
+                        Container(
+                          child: Text(
+                            picList[col]['ext'],
+                            style: TextStyle(color: Colors.black,backgroundColor: Colors.white),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                   onTap: () {
-                    print("ddd$_url");
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
                         return ScrollListAttachImageView(
-                            _url, index);
+                            _url,index );
                       }),
                     );
                   },

@@ -67,7 +67,7 @@ class _ZawazawaHeaderState extends State<ZawazawaHeader> with ZawazawaBase {
                 width: screenWidth - dp(30),
                 height: dp(40),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     ClipRRect(
                       borderRadius: BorderRadius.all(
@@ -85,79 +85,13 @@ class _ZawazawaHeaderState extends State<ZawazawaHeader> with ZawazawaBase {
                         ),
                       ),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        height: dp(35),
-                        margin: EdgeInsets.only(left: dp(15)),
-                        padding: EdgeInsets.only(left: dp(5), right: dp(5)),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(dp(35 / 2)),
-                          ),
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            // 搜索ICON
-                            Image.network(
-                              'http://toomhub.image.23cm.cn/14993df391fc3c455040e5978e8f85b8.jpg',
-                              width: dp(25),
-                              height: dp(15),
-                            ),
-                            // 搜索输入框
-                            Expanded(
-                              flex: 1,
-                              child: TextField(
-                                controller: _search,
-                                cursorColor: ZawazawaBase.defaultColor,
-                                cursorWidth: 1.5,
-                                style: TextStyle(
-                                  color: ZawazawaBase.defaultColor,
-                                  fontSize: 14.0,
-                                ),
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none
-                                  ),
-                                  contentPadding: EdgeInsets.all(0),
-                                  hintText: '金咕咕doinb',
-                                ),
-                              ),
-                            ),
-                            Platform.isAndroid ? GestureDetector(
-                              onTap: _scan,
-                              child: Image.network(
-                                'http://toomhub.image.23cm.cn/14993df391fc3c455040e5978e8f85b8.jpg',
-                                width: dp(20),
-                                height: dp(15),
-                              ),
-                            ) : SizedBox(),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: dp(10)),
-                      child: Image.network(
-                        'http://toomhub.image.23cm.cn/14993df391fc3c455040e5978e8f85b8.jpg',
-                        width: dp(25),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: dp(10)),
-                      child: Image.network(
-                        'http://toomhub.image.23cm.cn/14993df391fc3c455040e5978e8f85b8.jpg',
-                        width: dp(25),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: dp(10)),
-                      child: Image.network(
-                        'http://toomhub.image.23cm.cn/14993df391fc3c455040e5978e8f85b8.jpg',
-                        width: dp(25),
-                      ),
-                    ),
+//                    Padding(
+//                      padding: EdgeInsets.only(left: dp(10)),
+//                      child: Image.network(
+//                        'http://toomhub.image.23cm.cn/14993df391fc3c455040e5978e8f85b8.jpg',
+//                        width: dp(25),
+//                      ),
+//                    ),
                   ],
                 ),
               ),
