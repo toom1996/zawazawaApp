@@ -106,7 +106,14 @@ class ScrollListAttach extends StatelessWidget with ZawazawaBase {
                         alignment: Alignment.bottomRight,
                         child: Text(
                           picList[col]['ext'],
-                          style: TextStyle(color: Colors.black,backgroundColor: Colors.white),
+                          style: TextStyle(color: Colors.white,backgroundColor: Colors.black.withOpacity(0.5)),
+                        ),
+                      ),
+                      Container(
+//                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          picList[col]['size'].toString(),
+                          style: TextStyle(color: Colors.white,backgroundColor: Colors.black.withOpacity(0.5)),
                         ),
                       )
                     ],

@@ -96,7 +96,7 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadiusDirectional.circular(10))),
-              padding: EdgeInsets.all(dp(10)),
+              padding: EdgeInsets.fromLTRB(dp(10), dp(10), dp(10), 0),
               margin: EdgeInsets.fromLTRB(0, dp(10), 0, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,14 +105,6 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
                     children: <Widget>[
                       _avatar(index),
                       _info(index),
-                      Column(
-                        children: [
-                          Icon(
-                            Icons.keyboard_arrow_down,
-                            color: Colors.grey.shade500,
-                          )
-                        ],
-                      ),
                     ],
                   ),
                   _content(index),
@@ -132,85 +124,83 @@ class _ScrollListState extends State<ScrollList> with ZawazawaBase {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, dp(15), dp(0), dp(10)),
+                    padding: EdgeInsets.fromLTRB(0, dp(0), dp(0), dp(0)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Container(
                           child: Row(
                             children: [
-                              Material(
-                                child: Row(
-                                  children: [
-                                    IconButton(icon: Icon(
-                                      Icons.share,
-                                      color: Colors.grey.shade500,
-                                      size: dp(20),
-                                    ), onPressed: () {
-                                      print("dddddddddddddddddddddddddddddddddddddddd");
-                                    },
-                                      highlightColor: Colors.red,),
-                                    Text(
-                                      '99',
-                                      style: TextStyle(
-                                          fontSize: dp(15), color: Colors.grey.shade500),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          child:Material(
-                            child: Row(
-                              children: [
-                                IconButton(icon: Icon(
-                                  Icons.share,
-                                  color: Colors.grey.shade500,
-                                  size: dp(20),
-                                ), onPressed: () {
-                                  print("dddddddddddddddddddddddddddddddddddddddd");
-                                },
-                                  highlightColor: Colors.red,),
-                                Text(
-                                  '99',
-                                  style: TextStyle(
-                                      fontSize: dp(15), color: Colors.grey.shade500),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.favorite,
+                              IconButton(icon: Icon(
+                                Icons.share,
                                 color: Colors.grey.shade500,
                                 size: dp(20),
-                              ),
+                              ), onPressed: () {
+                                print("dddddddddddddddddddddddddddddddddddddddd");
+                              },
+                                highlightColor: Colors.red,),
                               Text(
                                 '99',
                                 style: TextStyle(
                                     fontSize: dp(15), color: Colors.grey.shade500),
-                              ),
+                              )
                             ],
                           ),
                         ),
                         Container(
                           child: Row(
                             children: [
-                              Icon(
+                              IconButton(icon: Icon(
+                                Icons.comment,
+                                color: Colors.grey.shade500,
+                                size: dp(20),
+                              ), onPressed: () {
+                                print("dddddddddddddddddddddddddddddddddddddddd");
+                              },
+                                highlightColor: Colors.red,),
+                              Text(
+                                '99',
+                                style: TextStyle(
+                                    fontSize: dp(15), color: Colors.grey.shade500),
+                              )
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            IconButton(icon: Icon(
+                              Icons.favorite,
+                              color: Colors.grey.shade500,
+                              size: dp(20),
+                            ), onPressed: () {
+                              print("dddddddddddddddddddddddddddddddddddddddd");
+                            },
+                              highlightColor: Colors.red,
+                              padding: EdgeInsets.zero,
+                            ),
+                            Text(
+                              '99',
+                              style: TextStyle(
+                                  fontSize: dp(15), color: Colors.grey.shade500),
+                            )
+                          ],
+                        ),
+                        Container(
+                          child: Row(
+                            children: [
+                              IconButton(icon: Icon(
                                 Icons.more_horiz,
                                 color: Colors.grey.shade500,
                                 size: dp(20),
-                              ),
+                              ), onPressed: () {
+                                print("dddddddddddddddddddddddddddddddddddddddd");
+                              },
+                                highlightColor: Colors.red,),
                               Text(
                                 '99',
                                 style: TextStyle(
                                     fontSize: dp(15), color: Colors.grey.shade500),
-                              ),
+                              )
                             ],
                           ),
                         ),
